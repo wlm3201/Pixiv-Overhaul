@@ -1,0 +1,28 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "js",
+      "type": "node",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+      "program": "${workspaceFolder}\\${file}"
+    },
+    {
+      "name": "nwjs",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "nw",
+      "args": [
+        ".",
+        "--test-type",
+        "--ignore-certificate-errors",
+        "--host-rules=MAP cdn.jsdelivr.net U0,MAP images.prismic.io U1,MAP *pixiv.net pixivision.net,MAP *fanbox.cc pixivision.net,MAP *pximg.net U3,MAP *pinterest.com U4,MAP *pinimg.com U4,MAP *wallhaven.cc U5,MAP upld.e-hentai.org U6,MAP *e-hentai.org U7,MAP *ehgt.org U8,MAP *exhentai.org U9,MAP *hentaiverse.org U10,MAP *ehwiki.org U11,MAP *ehtracker.org U12,MAP *sukebei.nyaa.si U13,MAP *nyaa.si ddos-guard.net,MAP *pornhub.com U15,MAP *xvideos.com U16,MAP *xnxx.com U16,MAP *xhamster.com zh.xhamster.com,MAP *xhamster42.desi zh.xhamster42.desi,MAP *rutube.ru U19,MAP *.googlevideo.com U20,MAP *google* g.cn,MAP *gstatic.com g.cn,MAP *youtube.com g.cn,MAP *.ggpht.com g.cn,MAP i.ytimg.com g.cn,MAP *youtube-nocookie.com g.cn,MAP *blogger.com g.cn,MAP external-content.duckduckgo.com U22,MAP *duckduckgo.com U23,MAP *startpage.com U24,MAP *twitter.com U25,MAP x.com U25,MAP *.x.com U25,MAP t.coU25,MAP *.t.co U25,MAP *twimg.com U26,MAP *facebook.com U27,MAP *fbcdn.net U27,MAP business.whatsapp.comU27,MAP *whatsapp.com U28,MAP *whatsapp.net U28,MAP *instagram.com U29,MAP *instagr.am U29,MAP ig.me U29,MAP *.ig.me U29,MAP *github.com U30,MAP *githubusercontent.com U31,MAP internal-api.virginia.labs.lumalabs.ai U32,MAP *lumalabs.ai vercel.com,MAP upload.wikimedia.org U34,MAP *wikipedia.org U35,MAP *wikimedia.org U35,MAP *wikinews.org U35,MAP *wiktionary.org U35,MAP *wikibooks.org U35,MAP *wikiversity.org U35,MAP*wikidata.org U35,MAP *wikiquote.org U35,MAP *wikivoyage.org U35,MAP *wikifunctions.org U35,MAP *1lib.skU36,MAP *singlelogin.re U36,MAP *archive.org U37,MAP *steamcommunity.com U38,MAP store.steampowered.com U39,MAP hello.vrchat.com U40,MAP ask.vrchat.com U41,MAP account.proton.me U42,MAP account-api.proton.me U43,MAP mail.proton.me U44,MAP calendar.proton.me U45,MAP drive.proton.me U46,MAP pass.proton.me U47,MAP *proton.me U48,MAP tamtam-lp*.ok.ru U49,MAP ok.ru U50,MAP www.ok.ru U50,MAP *ok.ru U51,MAP cdn1.cdn-telegram.org U52,MAP cdn4.cdn-telegram.org U53,MAP cdn5.cdn-telegram.org U54,MAP zws1*.web.telegram.org U55,MAPzws3*.web.telegram.org U55,MAP zws2*.web.telegram.org U56,MAP zws4*.web.telegram.org U56,MAP *.web.telegram.org U57,MAP *telegram.org U58,MAP *tg.dev U58,MAP t.me U58,MAP *.t.me U58,MAP *telesco.pe U58,MAP *discord.com U59,MAP *discord.gg U60,MAP *discordapp.com U61,MAP *rumble.com U64,MAP *reddit.com U65,MAP *redditstatic.com U65,MAP *redd.it U65,MAP *redditmedia.com U65,MAP *quora.com fs.quoracdn.net,MAP *v2ex.comU67,MAP *onedrive.live.com U68,MAP *mega.io U69,MAP *mega.nz U70,MAP *api.mega.co.nz U71,MAP *amazon.co.jp amazon.com,MAP *etsy.com U73,MAP *bbc.com U74,MAP *bbci.co.uk U75,MAP *bbc.co.uk U75,MAP *nytimes.com U76,MAP *nyt.com U76,MAP *rfi.fr U77,MAP graphql.api.dailymotion.com U78,MAP *dailymotion.com U79,MAP forum.f-droid.org U80,MAP f-droid.org U81,MAP www.f-droid.org U81,MAP fdroid.org U81,MAP *apkmirror.com U82,MAP *okx.com U83,MAP *patreon.com U84,MAP *patreonusercontent.com U85,MAP *vimeo.com U86,MAP identity.flickr.com U87,MAP *flickr.com U88,MAP *imgur.com U89,MAP *thetvdb.com U90",
+        "--host-resolver-rules=MAP U0 104.16.89.20,MAP U1 151.101.78.208,MAP pixivision.net 210.140.139.158,MAP U3 210.140.139.135,MAP U4 151.101.0.84,MAP U5 15.235.80.145,MAP U6 94.100.18.249,MAP U7 104.20.19.168,MAP U8 109.236.85.28,MAP U9 178.175.132.22,MAP U10 178.162.151.56,MAP U11 178.162.151.58,MAP U12 5.79.104.115,MAP U13 198.251.89.38,MAP ddos-guard.net 186.2.163.20,MAP U15 66.254.114.40,MAP U16 185.88.181.3,MAP zh.xhamster.com 104.17.35.109,MAP zh.xhamster42.desi 104.17.35.109,MAP U19 109.238.90.239,MAP U20 127.0.0.1,MAP g.cn 109.185.236.240,MAP U22 20.43.160.189,MAP U23 20.43.161.105,MAP U24 67.63.58.139,MAP U25 69.195.183.139,MAP U26 146.75.72.157,MAPU27 157.240.22.169,MAP U28 157.240.225.60,MAP U29 157.240.236.174,MAP U30 20.200.245.247,MAP U31 185.199.108.133,MAP U32 34.204.141.236,MAP vercel.com 76.76.21.21,MAP U34 208.80.154.240,MAP U35 185.15.59.224,MAP U36 176.123.7.228,MAP U37 207.241.228.68,MAP U38 104.73.78.128,MAP U39 23.46.197.62,MAP U40 198.185.159.145,MAP U41 216.66.8.43,MAP U42 185.70.42.36,MAP U43 185.70.42.20,MAP U44 185.70.42.37,MAP U45 185.70.42.39,MAP U46 185.70.42.40,MAP U47 185.70.42.63,MAP U48 185.70.42.45,MAP U49 217.20.158.136,MAP U50 5.61.23.11,MAP U51 5.61.23.30,MAP U52 34.111.15.3,MAP U53 34.111.35.152,MAP U54 34.111.108.175,MAP U55 149.154.174.200,MAP U56 38.94.111.240,MAP U57 149.154.170.200,MAP U58 38.94.111.240,MAP U59 162.159.137.232,MAP U60 162.159.130.234,MAP U61 162.159.130.233,MAP U64 205.220.231.24,MAP U65 146.75.33.140,MAP fs.quoracdn.net 162.159.152.17,MAP U67 172.67.35.211,MAP U68 13.107.42.13,MAP U69 66.203.127.11,MAP U70 31.216.144.5,MAP U71 66.203.125.15,MAP amazon.com 18.66.145.15,MAP U73 151.101.193.224,MAP U74 146.75.36.81,MAP U75 23.77.21.232,MAP U76 146.75.117.164,MAP U77 118.214.247.61,MAP U78 34.84.14.157,MAP U79 195.8.215.140,MAP U80 37.218.242.53,MAP U81 37.218.243.72,MAP U82 104.19.134.58,MAP U83 8.212.101.92,MAP U84 104.16.25.14,MAPU85 104.18.70.106,MAP U86 162.159.128.61,MAP U87 3.209.240.130,MAP U88 13.33.142.102,MAP U89 199.232.196.193,MAP U90 54.192.23.105"
+      ]
+    }
+  ]
+}

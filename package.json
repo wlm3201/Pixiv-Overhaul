@@ -1,0 +1,8 @@
+{
+  "name": "pixiv",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "start": "nw ."
+  },
+  "chromium-args": "--user-data-dir='../User Data' --enable-smooth-scrolling -enable-features=FluentOverlayScrollbar"}
