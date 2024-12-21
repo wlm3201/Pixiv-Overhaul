@@ -596,7 +596,7 @@ let enums = {
       return this.get(path, params);
     },
     recommendIllusts(illust_ids) {
-      let path = this.ajax + "/illust/recommend/illusts";
+      let path = "/illust/recommend/illusts";
       let params = {
         illust_ids,
       };
@@ -1122,7 +1122,7 @@ let enums = {
           };
         el.classList.add("liked");
       } else {
-        let j = await g.apis.unLike(illust.id);
+        let j = await g.apis.unLike(illust.bookmarkData.id);
         if (!j.error) delete illust.bookmarkData.id;
         el.classList.remove("liked");
       }
