@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pixiv瀑布流</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="frags">
+      <div name="discovery" class="frag">
+        <div class="imgbox"></div>
+      </div>
+      <div name="latest" class="frag hide">
+        <slot name="navbar"></slot>
+        <div class="imgbox"></div>
+      </div>
+      <div name="users" class="frag hide">
+        <div class="userbox"></div>
+      </div>
+      <div name="search" class="frag hide">
+        <form id="searchbar" class="menu">
+          <span id="searchbox">
+            <input
+              id="searchinput"
+              name="word"
+              type="text"
+              autocomplete="off" />
+            <ul id="prompts"></ul>
+          </span>
+          <select name="type">
+            <option value="all">插画、漫画、动图</option>
+            <option value="illust_and_ugoira">插画、动图</option>
+            <option value="illust">插画</option>
+            <option value="manga">漫画</option>
+            <option value="ugoira">动图</option>
+          </select>
+          <select name="s_mode">
+            <option value="s_tag">标签(部分—致)</option>
+            <option value="s_tag_full">标签(完全一致)</option>
+            <option value="s_tc">标题、说明文字</option>
+          </select>
+          <label>
+            隐藏AI
+            <input type="checkbox" name="ai_type" value="1" />
+          </label>
+          <span>
+            <input type="text" name="wlt" style="width: 50px" />×<input
+              type="text"
+              name="hlt"
+              style="width: 50px" />
+            ~
+            <input type="text" name="wgt" style="width: 50px" />×<input
+              type="text"
+              name="lgt"
+              style="width: 50px" />
+          </span>
+          <select name="ratio">
+            <option value="">所有纵横比</option>
+            <option value="0.5">横图</option>
+            <option value="-0.5">纵图</option>
+            <option value="0">正方形图</option>
+          </select>
+          <input type="date" name="scd" />
+          <input type="date" name="ecd" />
+          <select name="mode">
+            <option value="all">全部</option>
+            <option value="safe">全年龄</option>
+            <option value="r18">R-18</option>
+          </select>
+          <select name="order">
+            <option value="date_d">按最新排序</option>
+            <option value="date">按旧排序</option>
+          </select>
+          <input type="submit" value="搜索" id="searchbtn" />
+        </form>
+        <slot name="navbar"></slot>
+        <div class="imgbox"></div>
+      </div>
+      <div name="following" class="frag hide">
+        <slot name="navbar"></slot>
+        <div class="userbox"></div>
+      </div>
+      <div name="bookmarks" class="frag hide">
+        <slot name="navbar"></slot>
+        <div class="imgbox"></div>
+      </div>
+      <div name="history" class="frag hide">
+        <div class="imgbox"></div>
+      </div>
+      <div name="ranking" class="frag hide">
+        <div class="menu">
+          <label><input type="radio" name="mode" value="daily" />今日</label>
+          <label><input type="radio" name="mode" value="weekly" />本周</label>
+          <label><input type="radio" name="mode" value="monthly" />本月</label>
+          <label><input type="radio" name="mode" value="rookie" />新人</label>
+          <label><input type="radio" name="mode" value="original" />原创</label>
+          <label><input type="radio" name="mode" value="daily_ai" />A I</label>
+          <label><input type="radio" name="mode" value="male" />男性</label>
+          <label><input type="radio" name="mode" value="female" />女性</label>
+          <button class="prev"><</button>
+          <input type="date" name="date" />
+          <button class="next">></button>
+          <label>
+            <input type="checkbox" value="_r18" />
+            R-18
+          </label>
+        </div>
+        <slot name="navbar"></slot>
+        <div class="imgbox"></div>
+      </div>
+      <div name="vision" class="frag hide">
+        <div class="imgbox"></div>
+        <button id="rightbtn" class="round float" title="Caps">≡</button>
+        <div id="rightbar" class="sidebar">
+          <ul id="articlebox"></ul>
+          <div class="pages">
+            <input type="text" class="pagenum" />
+            <button class="goto">Go</button>
+          </div>
+          <button id="closeright" class="round">×</button>
+        </div>
+      </div>
+    </div>
+    <button id="leftbtn" class="round float" title="Tab">≡</button>
+    <button id="back" class="round float" title="alt+←"><</button>
+    <button id="forward" class="round float" title="alt+→">></button>
+    <button id="top" class="round float" title="home">△</button>
+    <button id="end" class="round float" title="end">▽</button>
+    <div id="leftbar" class="sidebar hide">
+      <div id="tabs">
+        <button name="discovery" class="tab">发现</button>
+        <button name="latest" class="tab">动态</button>
+        <button name="users" class="tab">用户</button>
+        <button name="search" class="tab">搜索</button>
+        <div class="split"></div>
+        <button name="following" class="tab">关注</button>
+        <button name="bookmarks" class="tab">收藏</button>
+        <button name="history" class="tab">历史</button>
+        <button name="ranking" class="tab">排行</button>
+        <button name="vision" class="tab">vision</button>
+      </div>
+      <span>
+        <span>高度：</span>
+        <span id="heightvalue"></span>
+      </span>
+      <input
+        id="heightinput"
+        type="range"
+        min="200"
+        max="600"
+        step="50"
+        value="300" />
+      <button id="refresh" class="round">↻</button>
+      <button id="closeleft" class="round">×</button>
+    </div>
+    <div id="cover" class="hide">
+      <img id="zoom" />
+      <button class="prev round float"><</button>
+      <button class="next round float">></button>
+    </div>
+    <div class="view"></div>
+    <div id="rest"></div>
+    <div class="toast hide"></div>
+    <template id="wraps">
+      <div class="wrap">
+        <img class="thumb" loading="lazy" />
+        <div class="info">
+          <img class="avatar" loading="lazy" />
+          <div class="textbox">
+            <div class="title"></div>
+            <div class="name"></div>
+          </div>
+          <div class="tags"></div>
+          <div class="like"></div>
+        </div>
+        <div class="detail"></div>
+        <div class="page"></div>
+      </div>
+    </template>
+    <template id="users">
+      <div class="user">
+        <div class="profile">
+          <img class="avatar" loading="lazy" />
+          <div class="name"></div>
+          <div class="uid"></div>
+          <button class="follow"></button>
+        </div>
+        <div class="works">
+          <div class="holder"></div>
+          <button class="scroll round">></button>
+        </div>
+      </div>
+    </template>
+    <template name="navbar">
+      <div class="navbar">
+        <button class="prev"><</button>
+        <span class="pages"></span>
+        <button class="next">></button>
+        <input type="text" class="pagenum" />
+        <button class="goto">Go</button>
+      </div>
+    </template>
+    <template id="user">
+      <div class="view userpage">
+        <img src="" alt="" class="bg" />
+        <div class="user">
+          <img class="avatar" />
+          <div class="info">
+            <span class="name"></span>
+            <span class="uid"></span>
+            <button class="bookmarked">收藏</button>
+            <button class="followed">已关注</button>
+            <button class="follow"></button>
+            <div class="desc"></div>
+          </div>
+        </div>
+        <slot name="navbar"></slot>
+        <div class="imgbox nouser"></div>
+      </div>
+    </template>
+    <template id="illust">
+      <div class="view illustpage">
+        <div class="illust">
+          <div class="pics">
+            <img class="orig" loading="lazy" />
+          </div>
+          <div class="info">
+            <div>
+              <img class="avatar" />
+              <span class="name"></span>
+              <span class="uid"></span>
+            </div>
+            <div>
+              <span class="title"></span>
+              <span class="id"></span>
+              <span class="like"></span>
+            </div>
+            <div class="desc"></div>
+            <div class="tags"></div>
+            <div class="stat"></div>
+            <div class="date"></div>
+          </div>
+        </div>
+        <slot name="navbar"></slot>
+        <div class="imgbox"></div>
+      </div>
+    </template>
+    <template id="followed">
+      <div class="view">
+        <slot name="navbar"></slot>
+        <div class="userbox"></div>
+      </div>
+    </template>
+    <template id="bookmarked">
+      <div class="view">
+        <slot name="navbar"></slot>
+        <div class="imgbox"></div>
+      </div>
+    </template>
+    <template id="article">
+      <li class="article">
+        <div class="title"></div>
+        <div class="detail">
+          <img class="preview" loading="lazy" />
+          <div class="tags"></div>
+        </div>
+      </li>
+    </template>
+    <script src="sid.js">
+      chrome.cookies?.remove({ url: "https://www.pixiv.net", name: "PHPSESSID" });
+      chrome.cookies?.set({
+        url: "https://www.pixiv.net",
+        name: "PHPSESSID",
+        value: "PHPSESSID",
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
