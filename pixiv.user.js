@@ -1330,6 +1330,7 @@ let enums = {
       frag.\$(".goto").onclick = () => jump();
       g.pageMgr = {
         loadNext: loadNextIllusts,
+        flexbox: frag.\$(".imgbox"),
       };
       articlebox.onscroll = () => loadNextArticles();
       loadNextArticles();
