@@ -246,7 +246,7 @@ body {
     align-content: start;
     flex-wrap: wrap;
     line-height: 0;
-    gap: 20px;
+    gap: 10px;
     &::after {
       content: "";
       flex-grow: 114514;

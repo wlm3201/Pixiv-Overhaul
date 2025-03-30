@@ -523,10 +523,12 @@ let enums = {
       if (this.inited) return this.inited;
       return (this.inited = new Promise(async r => {
         let doc = await parse(this.host);
-        let text = doc.\$('[name="global-data"]').content;
+        let text = doc.\$("script#__NEXT_DATA__").textContent;
         let j = JSON.parse(text);
-        this.csrf = j.token;
-        this.uid = j.userData.id;
+        this.csrf = JSON.parse(
+          j.props.pageProps.serverSerializedPreloadedState
+        ).api.token;
+        this.uid = j.props.pageProps.gaUserData.userId;
         r();
       }));
     },
@@ -2132,7 +2134,7 @@ body {
     align-content: start;
     flex-wrap: wrap;
     line-height: 0;
-    gap: 20px;
+    gap: 10px;
     &::after {
       content: "";
       flex-grow: 114514;
